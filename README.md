@@ -1225,24 +1225,312 @@ void main() {
 
 ## **Palavras-chave e Conceitos**
 
-### **Import:** 
+#### **Import:** 
+#### Inclui funcionalidades de outros arquivos, módulos ou bibliotecas.
 
-#### em Dart é utilizado para incluir funcionalidades de outros arquivos, módulos ou bibliotecas em seu código. Isso permite que você reutilize código existente, organize seu projeto em diferentes arquivos e utilize pacotes externos que podem fornecer funcionalidades adicionais.
+```dart
+import 'package:nome_do_pacote/caminho/arquivo.dart';
+```
+### **Exemplo do código acima:**
+#### A declaração import é essencial em Dart para reutilizar e compartilhar código entre diferentes partes do seu aplicativo. Ela permite importar arquivos locais e pacotes externos, fornecendo acesso a classes, funções e outros recursos definidos nesses arquivos e pacotes.
 
-#### **Main:** Função principal do programa.
+### **Main:** 
+#### Função principal do programa
 
-#### **Class:** Define um tipo de dado com propriedades e métodos.
+```dart
+void main() {
+  print('Bem-vindo ao programa Dart!');
+  
+  int numero1 = 10;
+  int numero2 = 5;
+  
+  int soma = numero1 + numero2;
+  
+  print('A soma de $numero1 e $numero2 é: $soma');
+}
+```
+### **Exemplo do código acima:**
+#### Neste exemplo simples, a função main() é usada como o ponto de entrada do programa. Ela contém o código que será executado quando o programa for iniciado. Dentro da função main(), realizamos algumas operações básicas, como imprimir mensagens e calcular a soma de dois números.
 
-#### **Extends:** Indica que uma classe herda de outra classe.
+### **Class:**
 
-#### **@override:** Indica que um método está sendo substituído.
+#### Define um tipo de dado com propriedades e métodos.
 
-#### **Final:** Indica que uma variável ou referência não será alterada após a atribuição.
+```dart
+class Carro {
+  // Propriedades da classe
+  String modelo;
+  int ano;
+  String cor;
+
+  // Construtor da classe
+  Carro(this.modelo, this.ano, this.cor);
+
+  // Método para exibir informações do carro
+  void exibirInfo() {
+    print('Modelo: $modelo, Ano: $ano, Cor: $cor');
+  }
+}
+
+void main() {
+  // Criando um objeto da classe Carro
+  Carro meuCarro = Carro('Fusca', 1972, 'azul');
+
+  // Chamando o método para exibir informações do carro
+  meuCarro.exibirInfo(); // Saída: Modelo: Fusca, Ano: 1972, Cor: azul
+}
+```
+### **Exemplo do código acima:**
+#### As classes em Dart permitem que você defina tipos de dados personalizados com suas próprias propriedades e métodos. Isso ajuda a organizar seu código e a encapsular a lógica relacionada a um determinado tipo de dado.
+
+### **Extends:**
+#### Indica que uma classe herda de outra classe.
+
+```dart
+// Classe pai (superclasse)
+class Animal {
+  String nome;
+
+  // Construtor da classe Animal
+  Animal(this.nome);
+
+  // Método que pode ser chamado pela subclasse
+  void fazerSom() {
+    print('$nome faz um som.');
+  }
+}
+
+// Classe filha (subclasse)
+class Cachorro extends Animal {
+  // Construtor da classe Cachorro
+  Cachorro(String nome) : super(nome); // Chama o construtor da superclasse
+
+  // Sobrescrevendo o método fazerSom
+  @override
+  void fazerSom() {
+    print('$nome diz: Au Au!');
+  }
+}
+
+void main() {
+  // Criando um objeto da classe Cachorro
+  Cachorro meuCachorro = Cachorro('Rex');
+
+  // Chamando métodos da classe pai e da classe filha
+  meuCachorro.fazerSom(); // Saída: Rex diz: Au Au!
+}
+```
+### **Exemplo do código acima:**
+#### A palavra-chave extends em Dart permite que você crie hierarquias de classes, onde subclasses herdam comportamentos e propriedades de suas superclasses. Isso promove a reutilização de código e facilita a manutenção do software.
+
+### **@override:**
+#### Indica que um método está sendo substituído.
+
+```dart
+// Classe pai (superclasse)
+class Animal {
+  String nome;
+
+  // Construtor da classe Animal
+  Animal(this.nome);
+
+  // Método que pode ser sobrescrito
+  void fazerSom() {
+    print('$nome faz um som.');
+  }
+}
+
+// Classe filha (subclasse)
+class Gato extends Animal {
+  // Construtor da classe Gato
+  Gato(String nome) : super(nome); // Chama o construtor da superclasse
+
+  // Sobrescrevendo o método fazerSom
+  @override
+  void fazerSom() {
+    print('$nome diz: Miau!');
+  }
+}
+
+void main() {
+  // Criando um objeto da classe Gato
+  Gato meuGato = Gato('Mimi');
+
+  // Chamando o método sobrescrito
+  meuGato.fazerSom(); // Saída: Mimi diz: Miau!
+}
+```
+### **Exemplo do código acima:**
+#### @override é uma prática recomendada em Dart ao sobrescrever métodos. Ela melhora a legibilidade do código e ajuda a detectar erros durante o desenvolvimento.
+
+### **Final:**
+#### final em Dart é usada para declarar variáveis que podem ser atribuídas uma única vez.
+
+```dart
+void main() {
+  final String nome = 'Maria';
+  
+  print('O nome é: $nome'); // Saída: O nome é: Maria
+  
+  // Tentativa de alterar o valor da variável final
+  // nome = 'Ana'; // Isso causará um erro de compilação
+}
+```
+### **Exemplo do código acima:**
+#### Este exemplo ilustra como usar a palavra-chave final para declarar uma variável em Dart que deve permanecer constante após sua inicialização. Isso é útil quando você deseja garantir que o valor de uma variável não seja alterado acidentalmente durante a execução do programa.
 
 ## **Outros Conceitos em Dart e Flutter:**
 
-#### **SetState:** Método fundamental em Flutter para atualizar o estado de um widget.
-#### **StatelessWidget:** Classe base para widgets que não têm estado mutável.
-#### **StatefulWidget e State:** Classe e instância usadas para widgets com estado mutável.
-#### **Map, keys, values:** Utilizados para trabalhar com coleções de pares chave-valor.
+#### **SetState:**
+#### Método fundamental em Flutter para atualizar o estado de um widget.
 
+```dart
+import 'package:flutter/material.dart';
+
+void main() {
+  runApp(MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: ContadorWidget(),
+    );
+  }
+}
+
+class ContadorWidget extends StatefulWidget {
+  @override
+  _ContadorWidgetState createState() => _ContadorWidgetState();
+}
+
+class _ContadorWidgetState extends State<ContadorWidget> {
+  int _contador = 0; // Variável que armazena o valor do contador
+
+  void _incrementarContador() {
+    setState(() {
+      _contador++; // Incrementa o contador
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Exemplo de setState'),
+      ),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            Text(
+              'Você pressionou o botão esta quantidade de vezes:',
+            ),
+            Text(
+              '$_contador', // Exibe o valor atual do contador
+              style: Theme.of(context).textTheme.headline4,
+            ),
+          ],
+        ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: _incrementarContador, // Chama a função para incrementar o contador
+        tooltip: 'Incrementar',
+        child: Icon(Icons.add),
+      ),
+    );
+  }
+}
+```
+### **Exemplo do código acima:**
+#### Este exemplo ilustra como criar um aplicativo Flutter simples com um contador. Ele demonstra os conceitos de widgets sem estado (StatelessWidget) e com estado (StatefulWidget), além do uso do método setState() para atualizar a interface do usuário em resposta a interações do usuário.
+
+### **StatelessWidget:**
+#### Classe base para widgets que não têm estado mutável.
+
+```dart
+import 'package:flutter/material.dart';
+
+void main() {
+  runApp(MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: Scaffold(
+        appBar: AppBar(
+          title: Text('Exemplo de StatelessWidget'),
+        ),
+        body: Center(
+          child: Text('Este é um exemplo de StatelessWidget.'),
+        ),
+      ),
+    );
+  }
+}
+```
+### **Exemplo do código acima:**
+#### exemplos acima mostram como criar widgets simples usando a classe StatelessWidget. Esses widgets são ideais para representar elementos da interface do usuário que não precisam de atualizações ou mudanças dinâmicas. Eles são úteis para exibir informações estáticas, como textos, imagens ou qualquer outro conteúdo que não dependa do estado mutável.
+
+
+### **StatefulWidget e State:** 
+#### Classe e instância usadas para widgets com estado mutável.
+
+```dart
+// 1. Definição do StatefulWidget
+class CounterWidget extends StatefulWidget {
+  @override
+  _CounterWidgetState createState() => _CounterWidgetState();
+}
+
+// 2. Definição da classe State
+class _CounterWidgetState extends State<CounterWidget> {
+  int _count = 0; // Variável de estado
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Text(
+          'Você clicou o botão $_count vezes.',
+          style: TextStyle(fontSize: 24),
+        ),
+        ElevatedButton(
+          onPressed: _incrementCounter,
+          child: Text('Clique aqui'),
+        ),
+      ],
+    );
+  }
+
+  // Método para incrementar o contador
+  void _incrementCounter() {
+    setState(() {
+      _count++;
+    });
+  }
+}
+```
+### **Exemplo do código acima:**
+
+### **Map, keys, values:**
+#### Utilizados para trabalhar com coleções de pares chave-valor.
+
+```dart
+void main() {
+  // Criando um Map usando literais
+  var frutas = {
+    'maçã': 1,
+    'banana': 2,
+    'laranja': 3,
+  };
+
+  print(frutas); // Saída: {maçã: 1, banana: 2, laranja: 3}
+}
+```
+### **Exemplo do código acima:**
+#### Este exemplo simples ilustra como criar um Map em Dart usando literais. Os maps são úteis para armazenar coleções de dados que podem ser acessadas rapidamente por meio de chaves. Neste caso específico, estamos usando um map para associar nomes de frutas a valores numéricos.
